@@ -1,11 +1,7 @@
 <form wire:submit.prevent="submit">
     <div class="flex items-start -mx-2">
         <div class="flex-shrink-0 px-2">
-            @guest
-                <img class="w-12 h-12 border rounded-lg" src="https://api.adorable.io/avatars/face/eyes4/nose3/mouth7/8e8895" alt="">
-            @else
-                <img class="w-12 h-12 border rounded-lg" src="{{ auth()->user()->avatar }}" alt="">
-            @endguest
+            <img class="w-12 h-12 border rounded-lg" src="{{ auth()->user()->avatar }}" alt="">
         </div>
         <div class="flex-1 px-2">
             <input
