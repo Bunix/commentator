@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Plmrlnsnts\Commentator\SendsComments;
+
+class CommentsController
+{
+    use SendsComments;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
+    /**
+     * Validate the request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return array
+     */
+    protected function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'body' => ['required', 'string']
+        ]);
+    }
+}
