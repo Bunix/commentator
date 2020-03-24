@@ -84,8 +84,8 @@ class CommentatorServiceProvider extends ServiceProvider
 
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/plmrlnsnts'),
-        ], 'commentator');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/commentator'),
+        ]);
 
         // Publishing assets.
         /*$this->publishes([

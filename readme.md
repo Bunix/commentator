@@ -1,57 +1,83 @@
-# Commentator
+# Commentator 🤭
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+You're supposed to be using a third-party commenting system not this.
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+But if you really need to, this package lets you add a comment section to your pages.
 
-## Installation
-
-Via Composer
+## Install
 
 ``` bash
 $ composer require plmrlnsnts/commentator
 ```
 
-## Usage
+## Prerequisites
 
-## Change log
+Run the following command to publish files we will need later on.
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
+```bash
+php artisan vendor:publish --provider="Plmrlnsnts\Commentator\CommentatorServiceProvider"
 ```
 
-## Contributing
+You can change the `User` namespace in `config/commentator.php`.
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+```php
+return [
+    'models' => [
+        'user' => \App\Models\User::class
+    ]
+];
+```
 
-## Security
+Run the migrations.
 
-If you discover any security related issues, please email author email instead of using the issue tracker.
+```bash
+php artisan migrate
+```
 
-## Credits
+## Models
 
-- [author name][link-author]
-- [All Contributors][link-contributors]
+Users may start adding comments once the `HasComments` trait has been added to an eloquent models
 
-## License
+```php
+class Article extends Model
+{
+    use \Plmrlnsnts\Commentator\HasComments;
+}
+```
 
-license. Please see the [license file](license.md) for more information.
+## Livewire Components
 
-[ico-version]: https://img.shields.io/packagist/v/plmrlnsnts/commentator.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/plmrlnsnts/commentator.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/plmrlnsnts/commentator/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+This package has few Livewire components which you can use to display a comment section in any of your blade templates. Here is a template to get you started.
 
-[link-packagist]: https://packagist.org/packages/plmrlnsnts/commentator
-[link-downloads]: https://packagist.org/packages/plmrlnsnts/commentator
-[link-travis]: https://travis-ci.org/plmrlnsnts/commentator
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/plmrlnsnts
-[link-contributors]: ../../contributors
+```php
+<html>
+<head>
+    ...
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    @livewireStyles
+</head>
+
+<body>
+    <main>
+        ...
+        @livewire('commentator::comments', ['commentable' => $article])
+    </main>
+
+    ...
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.js" defer></script>
+</body>
+</html>
+```
+
+## Customizations
+
+Unhappy with the default appearance? Modify the component views in `resources/views/vendor/commentator` directory based on your preference.
+
+## API Controllers
+
+There is also an artisan command to scaffold the comment controller and routes for you.
+
+```bash
+php artisan commentator:make
+```
