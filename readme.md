@@ -72,7 +72,7 @@ This package has few Livewire components that can display a comment section in a
 
 ## Customizations
 
-Unhappy with the default appearance? Modify the component views in `resources/views/vendor/commentator` directory to match your preference.
+Unsatistfied with the default appearance? Modify the component views in `resources/views/vendor/commentator` directory to match your preference.
 
 ## API Controllers
 
