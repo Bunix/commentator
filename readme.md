@@ -45,9 +45,9 @@ class Article extends Model
 }
 ```
 
-## Livewire Components
+## Livewire
 
-This package has few Livewire components which you can use to display a comment section in any of your blade templates. Here is a template to get you started.
+This package has few Livewire components that can display a comment section in any of your blade templates. Here is a template to get you started.
 
 ```php
 <html>
@@ -72,7 +72,7 @@ This package has few Livewire components which you can use to display a comment 
 
 ## Customizations
 
-Unhappy with the default appearance? Modify the component views in `resources/views/vendor/commentator` directory based on your preference.
+Unhappy with the default appearance? Modify the component views in `resources/views/vendor/commentator` directory to match your preference.
 
 ## API Controllers
 
