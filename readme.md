@@ -1,6 +1,6 @@
 # Commentator 🤭
 
-You're supposed to be using a third-party commenting system not this.
+You're supposed to be using a third-party comment system not this.
 
 But if you really need to, this package lets you add a comment section to your pages.
 
@@ -36,7 +36,7 @@ php artisan migrate
 
 ## Models
 
-Users may start adding comments once the `HasComments` trait has been added to an eloquent models
+Users may start adding comments once the `HasComments` trait has been added to an eloquent model.
 
 ```php
 class Article extends Model
